@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>congestion_tax_calculator_net_core_data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.32" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\congestion-tax-calculator-net-shared\congestion-tax-calculator-net-shared.csproj" />
+  </ItemGroup>
+
+</Project>

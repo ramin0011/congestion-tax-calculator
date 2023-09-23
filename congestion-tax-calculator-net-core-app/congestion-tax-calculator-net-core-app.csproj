@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>congestion_tax_calculator_net_core_app</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\congestion-tax-calculator-net-core\congestion-tax-calculator-net-core.csproj" />
+  </ItemGroup>
+
+</Project>

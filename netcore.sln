@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "congestion-tax-calculator-net-core", "congestion-tax-calculator-net-core\congestion-tax-calculator-net-core.csproj", "{E7EAA5E3-067E-405A-9DF5-21A9872C29F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "congestion-tax-calculator-net-core-app", "congestion-tax-calculator-net-core-app\congestion-tax-calculator-net-core-app.csproj", "{524BAD26-F49E-4940-9036-13AB01E7F43D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "congestion-tax-calculator-net-core-data", "congestion-tax-calculator-net-core-data\congestion-tax-calculator-net-core-data.csproj", "{191D72C8-C007-40FE-88B8-43B8CE513588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "congestion-tax-calculator-net-shared", "congestion-tax-calculator-net-shared\congestion-tax-calculator-net-shared.csproj", "{62D4E35B-529F-4BE5-AF14-0C10AF3D75A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7EAA5E3-067E-405A-9DF5-21A9872C29F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7EAA5E3-067E-405A-9DF5-21A9872C29F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7EAA5E3-067E-405A-9DF5-21A9872C29F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7EAA5E3-067E-405A-9DF5-21A9872C29F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{524BAD26-F49E-4940-9036-13AB01E7F43D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{524BAD26-F49E-4940-9036-13AB01E7F43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{524BAD26-F49E-4940-9036-13AB01E7F43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{524BAD26-F49E-4940-9036-13AB01E7F43D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{191D72C8-C007-40FE-88B8-43B8CE513588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{191D72C8-C007-40FE-88B8-43B8CE513588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{191D72C8-C007-40FE-88B8-43B8CE513588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{191D72C8-C007-40FE-88B8-43B8CE513588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D4E35B-529F-4BE5-AF14-0C10AF3D75A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D4E35B-529F-4BE5-AF14-0C10AF3D75A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D4E35B-529F-4BE5-AF14-0C10AF3D75A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D4E35B-529F-4BE5-AF14-0C10AF3D75A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44928424-1D7A-4A6C-841F-D00A49F669D4}
+	EndGlobalSection
+EndGlobal

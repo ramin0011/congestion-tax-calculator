@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>congestion.calculator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nager.Holiday" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\congestion-tax-calculator-net-core-data\congestion-tax-calculator-net-core-data.csproj" />
+    <ProjectReference Include="..\congestion-tax-calculator-net-shared\congestion-tax-calculator-net-shared.csproj" />
+  </ItemGroup>
+
+</Project>
