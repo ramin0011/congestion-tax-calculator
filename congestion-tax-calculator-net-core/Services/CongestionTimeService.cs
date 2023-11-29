@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using congestion.calculator.Models.Congestion;
 using congestion.calculator.Services.Interfaces;
 using congestion_tax_calculator_net_core_data.Repositories.Interfaces;
+using congestion_tax_calculator_net_core_data.UnitOfWork;
 
 namespace congestion.calculator.Services
 {
@@ -11,9 +12,9 @@ namespace congestion.calculator.Services
     {
         private ICongestionTimeRepository _congestionTimeRepository;
 
-        public CongestionTimeService(ICongestionTimeRepository congestionTimeRepository)
+        public CongestionTimeService(IUnitOfWork unitOfWork)
         {
-            this._congestionTimeRepository = congestionTimeRepository;
+            this._congestionTimeRepository=unitOfWork.CongestionTimeRepository;
         }
 
         public Task<List<CongestionTime>> GetAllByCity(string city)

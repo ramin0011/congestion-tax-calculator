@@ -1,9 +1,11 @@
 using congestion.calculator.Services;
 using congestion.calculator.Services.Interfaces;
+using congestion_tax_calculator_net_core_api.MiddleWares;
 using congestion_tax_calculator_net_core_data;
 using congestion_tax_calculator_net_core_data.Repositories;
 using congestion_tax_calculator_net_core_data.Repositories.Base;
 using congestion_tax_calculator_net_core_data.Repositories.Interfaces;
+using congestion_tax_calculator_net_core_data.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -26,6 +28,7 @@ namespace congestion_tax_calculator_net_core_api
             
             builder.Services.AddScoped<ICongestionTaxCalculator, CongestionTaxCalculator>();
             builder.Services.AddScoped<ICongestionTimeService, CongestionTimeService>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
             builder.Services.AddEndpointsApiExplorer();
@@ -51,6 +54,8 @@ namespace congestion_tax_calculator_net_core_api
 
             app.UseSwagger();
             app.UseSwaggerUI();
+
+            app.UseMiddleware<UnitOfWorkMiddleware>();
 
             app.Run();
         }

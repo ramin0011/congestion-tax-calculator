@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace congestion_tax_calculator_net_core_data.Repositories.Base
 {
-    public class BaseRepository<T> : IDisposable, IRepositoryBase<T> where T : class
+    public class BaseRepository<T> :  IRepositoryBase<T> where T : class
     {
         protected readonly CongestionDbContext _context;
         public BaseRepository(CongestionDbContext context)
@@ -64,12 +64,6 @@ namespace congestion_tax_calculator_net_core_data.Repositories.Base
         {
             _context.Set<T>().RemoveRange(entities);
         }
-
-        public async void Dispose()
-        {
-            await _context?.SaveChangesAsync()!;
-        }
-
 
     }
 }
