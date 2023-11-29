@@ -14,6 +14,7 @@ namespace congestion_tax_calculator_net_core_data.Repositories.Interfaces
         IQueryable<T> GetAllQueryable();
         Task<List<T>> GetAll();
         Task<List<T>> Find(Expression<Func<T, bool>> expression);
+        Task<int> Count(Expression<Func<T, bool>> expression);
         ValueTask<EntityEntry<T>> Add(T entity);
         Task AddRange(IEnumerable<T> entities);
         void Remove(T entity);

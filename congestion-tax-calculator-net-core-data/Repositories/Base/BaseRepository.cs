@@ -18,6 +18,11 @@ namespace congestion_tax_calculator_net_core_data.Repositories.Base
             _context = context;
         }
 
+        public Task<int> Count(Expression<Func<T, bool>> expression)
+        {
+            return _context.Set<T>().Where(expression).CountAsync();
+        }
+
         public ValueTask<EntityEntry<T>> Add(T entity)
         {
            return _context.Set<T>().AddAsync(entity);
@@ -60,9 +65,9 @@ namespace congestion_tax_calculator_net_core_data.Repositories.Base
             _context.Set<T>().RemoveRange(entities);
         }
 
-        public void Dispose()
+        public async void Dispose()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
 
