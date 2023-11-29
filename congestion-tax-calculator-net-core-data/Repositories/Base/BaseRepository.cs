@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 using congestion_tax_calculator_net_core_data.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace congestion_tax_calculator_net_core_data.Repositories.Base
 {
@@ -15,26 +18,26 @@ namespace congestion_tax_calculator_net_core_data.Repositories.Base
             _context = context;
         }
 
-        public void Add(T entity)
+        public ValueTask<EntityEntry<T>> Add(T entity)
         {
-            _context.Set<T>().Add(entity);
+           return _context.Set<T>().AddAsync(entity);
         }
 
-        public void AddRange(IEnumerable<T> entities)
+        public Task AddRange(IEnumerable<T> entities)
         {
-            _context.Set<T>().AddRange(entities);
+           return _context.Set<T>().AddRangeAsync(entities);
         }
 
 
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        public Task<List<T>> Find(Expression<Func<T, bool>> expression)
         {
-            return _context.Set<T>().Where(expression);
+            return _context.Set<T>().Where(expression).ToListAsync();
         }
 
-        public IEnumerable<T> GetAll()
+        public Task<List<T>> GetAll()
         {
-            return _context.Set<T>().ToList();
+            return _context.Set<T>().ToListAsync();
         }
 
         public IQueryable<T> GetAllQueryable()
@@ -42,9 +45,9 @@ namespace congestion_tax_calculator_net_core_data.Repositories.Base
             return _context.Set<T>().AsQueryable();
         }
 
-        public T GetById(int id)
+        public ValueTask<T> GetById(int id)
         {
-            return _context.Set<T>().Find(id);
+            return _context.Set<T>().FindAsync(id);
         }
 
         public void Remove(T entity)

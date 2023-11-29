@@ -8,6 +8,6 @@ namespace congestion.calculator.Services.Interfaces
     public interface ICongestionTimeService
     {
         Task<List<CongestionTime>> GetAll(string city);
-        void Create(string city, TimeSpan startTime, TimeSpan endTime, int fee);
+        Task Create(string city, TimeSpan startTime, TimeSpan endTime, int fee);
     }
 }

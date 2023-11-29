@@ -18,10 +18,10 @@ namespace congestion.calculator.Services
         {
             return _congestionTimeRepository.GetAllByCity(city);
         }
-        public void Create(string city, TimeSpan startTime, TimeSpan endTime, int fee)
+        public async Task Create(string city, TimeSpan startTime, TimeSpan endTime, int fee)
         {
             city = city.ToLower();
-            _congestionTimeRepository.Add(new CongestionTime()
+            await _congestionTimeRepository.Add(new CongestionTime()
             {
                 EndTime = endTime,
                 City = city,
