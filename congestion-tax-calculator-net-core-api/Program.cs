@@ -27,11 +27,19 @@ namespace congestion_tax_calculator_net_core_api
             builder.Services.AddScoped<ICongestionTaxCalculator, CongestionTaxCalculator>();
             builder.Services.AddScoped<ICongestionTimeService, CongestionTimeService>();
 
-          
 
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/")
+                    context.Response.Redirect("/swagger");
+                else
+                    await next.Invoke();
+            });
             // Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();
@@ -40,6 +48,9 @@ namespace congestion_tax_calculator_net_core_api
 
 
             app.MapControllers();
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.Run();
         }
