@@ -67,7 +67,7 @@ namespace congestion_tax_calculator_net_core_data.Repositories.Base
 
         public async void Dispose()
         {
-            await _context.SaveChangesAsync();
+            await _context?.SaveChangesAsync()!;
         }
 
 
