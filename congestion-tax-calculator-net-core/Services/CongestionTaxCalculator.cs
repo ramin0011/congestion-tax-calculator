@@ -46,7 +46,7 @@ namespace congestion.calculator.Services
         public async Task<int> GetTollFee(DateTime date, Vehicle vehicle, string city)
         {
             if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle)) return 0;
-            var data =await _congestionTimeService.GetAll(city);
+            var data =await _congestionTimeService.GetAllByCity(city);
 
             TimeSpan timeSpan = new TimeSpan(date.Hour,date.Minute,date.Second);
 

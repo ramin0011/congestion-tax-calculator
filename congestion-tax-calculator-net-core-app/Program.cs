@@ -3,6 +3,8 @@ using System;
 using System.Linq;
 using congestion.calculator.Models.Vehicles;
 using congestion.calculator.Services;
+using congestion_tax_calculator_net_core_data;
+using congestion_tax_calculator_net_core_data.Repositories;
 
 namespace congestion_tax_calculator_net_core_app
 {
@@ -15,7 +17,7 @@ namespace congestion_tax_calculator_net_core_app
 
             Console.WriteLine("Testing Calculator!");
 
-            var calculator = new CongestionTaxCalculator();
+            var calculator = new CongestionTaxCalculator(new CongestionTimeService(new CongestionTimeRepository(CongestionDbContext.CreateDbContext())));
 
             string times = """
             "2013-01-14 21:00:00"
@@ -53,7 +55,7 @@ namespace congestion_tax_calculator_net_core_app
             """;
 
 
-            var service=new CongestionTimeService();
+            var service=new CongestionTimeService(new CongestionTimeRepository(CongestionDbContext.CreateDbContext()));
             service.Create("gothenberg",new TimeSpan(21,0,0), new TimeSpan(21,29,0),10);
             service.Create("gothenberg",new TimeSpan(15,0,0), new TimeSpan(15,29,0),10);
             var dates = times.Split(',').Select(a => a.Replace("\"", "")).Select(a => DateTime.Parse(a)).ToList();

@@ -16,9 +16,13 @@ namespace congestion.calculator.Services
             this._congestionTimeRepository = congestionTimeRepository;
         }
 
-        public Task<List<CongestionTime>> GetAll(string city)
+        public Task<List<CongestionTime>> GetAllByCity(string city)
         {
             return _congestionTimeRepository.GetAllByCity(city);
+        }
+        public Task<List<CongestionTime>> GetAll()
+        {
+            return _congestionTimeRepository.GetAll();
         }
 
         public async Task Create(string city, TimeSpan startTime, TimeSpan endTime, int fee)
