@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>congestion_tax_calculator_net_core_api</RootNamespace>
+    <UserSecretsId>6e80084f-72a9-4c2d-b076-2ae6a2333d08</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\congestion-tax-calculator-net-core-data\congestion-tax-calculator-net-core-data.csproj" />
+    <ProjectReference Include="..\congestion-tax-calculator-net-core\congestion-tax-calculator-net-core.csproj" />
+    <ProjectReference Include="..\congestion-tax-calculator-net-shared\congestion-tax-calculator-net-shared.csproj" />
+  </ItemGroup>
+
+</Project>
