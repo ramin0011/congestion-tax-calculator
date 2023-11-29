@@ -8,21 +8,21 @@ namespace congestion.calculator.Helpers.DateHelpers
     {
         public static Dictionary<DateTime, List<DateTime>> GroupByCloseDates(this DateTime[] dates, int interval_minutes)
         {
-            return GroupByCloseDates(dates.ToList(), interval_minutes);
+            return dates.ToList().GroupByCloseDates(interval_minutes);
         }
-        public static Dictionary<DateTime, List<DateTime>> GroupByCloseDates(this List<DateTime> dates,int interval_minutes)
+        public static Dictionary<DateTime, List<DateTime>> GroupByCloseDates(this List<DateTime> dates, int interval_minutes)
         {
-            var result=new Dictionary<DateTime,List<DateTime>>();
+            var result = new Dictionary<DateTime, List<DateTime>>();
 
-            dates = dates.OrderBy(a=>a).ToList();
+            dates = dates.OrderBy(a => a).ToList();
             for (int i = 0; i < dates.Count; i++)
             {
                 DateTime date = dates[i];
-                
+
                 List<DateTime> list = new List<DateTime>();
-                for (int j = i+1; j < dates.Count; j++)
+                for (int j = i + 1; j < dates.Count; j++)
                 {
-                    if (j== dates.Count-1)
+                    if (j == dates.Count - 1)
                     {
                         break;
                     }
@@ -43,8 +43,8 @@ namespace congestion.calculator.Helpers.DateHelpers
                 }
 
 
-                if(list.Any())
-                    result.Add(date,list);
+                if (list.Any())
+                    result.Add(date, list);
             }
 
             return result;
