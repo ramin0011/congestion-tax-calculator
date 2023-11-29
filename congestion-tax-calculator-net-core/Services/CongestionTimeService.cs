@@ -1,43 +1,33 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 using congestion.calculator.Models.Congestion;
 using congestion.calculator.Services.Interfaces;
-using congestion_tax_calculator_net_core_data;
+using congestion_tax_calculator_net_core_data.Repositories.Interfaces;
 
 namespace congestion.calculator.Services
 {
-    public  class CongestionTimeService : IDisposable, ICongestionTimeService
+    public  class CongestionTimeService :  ICongestionTimeService
     {
-
-        private CongestionDbContext _congestionDbContext;
-        public CongestionTimeService()
+        private ICongestionTimeRepository _congestionTimeRepository;
+        public CongestionTimeService(ICongestionTimeRepository congestionTimeRepository)
         {
-            _congestionDbContext = CongestionDbContext.CreateDbContext();
+           this._congestionTimeRepository=congestionTimeRepository;
         }
-        public List<CongestionTime> GetAll(string city)
+        public Task<List<CongestionTime>> GetAll(string city)
         {
-            return _congestionDbContext.CongestionTimes.Where(a => a.City == city.ToLower())
-                .OrderBy(a => a.StartTime).ToList();
+            return _congestionTimeRepository.GetAllByCity(city);
         }
-
         public void Create(string city, TimeSpan startTime, TimeSpan endTime, int fee)
         {
             city = city.ToLower();
-            _congestionDbContext.CongestionTimes.Add(new CongestionTime()
+            _congestionTimeRepository.Add(new CongestionTime()
             {
                 EndTime = endTime,
                 City = city,
                 StartTime = startTime,
                 Fee = fee
             });
-            _congestionDbContext.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            _congestionDbContext.SaveChanges();
-            _congestionDbContext?.Dispose();
         }
     }
 }

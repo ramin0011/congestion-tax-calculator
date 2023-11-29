@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using congestion.calculator.Helpers.DateHelpers;
 using congestion.calculator.Models.Vehicles;
 using congestion.calculator.Services.Interfaces;
@@ -14,15 +15,15 @@ namespace congestion.calculator.Services
         {
             this._congestionTimeService=congestionTimeService;
         }
-        public int GetTax(Vehicle vehicle, DateTime[] dates,string city)
+        public async Task<int> GetTax(Vehicle vehicle, DateTime[] dates, string city)
         {
             int totalFee = 0;
             foreach (var item in dates.GroupByCloseDates(60))
             {
-                int currentFee = GetTollFee(item.Key,vehicle,city);
+                int currentFee =await GetTollFee(item.Key,vehicle,city);
                 foreach (var date in item.Value)
                 {
-                    var _fee = GetTollFee(date, vehicle, city);
+                    var _fee = await GetTollFee(date, vehicle, city);
                     if (_fee>currentFee)
                         currentFee= _fee;
                 }
@@ -42,10 +43,10 @@ namespace congestion.calculator.Services
             return vehicle.GetVehicleType() != VehiclesTypes.Car;
         }
 
-        public int GetTollFee(DateTime date, Vehicle vehicle,string city)
+        public async Task<int> GetTollFee(DateTime date, Vehicle vehicle, string city)
         {
             if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle)) return 0;
-            var data = _congestionTimeService.GetAll(city);
+            var data =await _congestionTimeService.GetAll(city);
 
             TimeSpan timeSpan = new TimeSpan(date.Hour,date.Minute,date.Second);
 
