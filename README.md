@@ -1,5 +1,8 @@
 # Congestion Tax Calculator
 
+![image](https://github.com/ramin0011/congestion-tax-calculator/assets/4890955/40dbb8ad-d651-4fe4-8894-1f51b382fecb)
+
+
 Welcome to the Persici Financial Technologies assessment.
 
 This repository contains a developer [assignment](ASSIGNMENT.md) used as a basis for candidate intervew and evaluation.
