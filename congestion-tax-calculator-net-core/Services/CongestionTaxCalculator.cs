@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using congestion.calculator.Helpers.DateHelpers;
 using congestion.calculator.Models.Vehicles;
 using congestion.calculator.Services.Interfaces;
+using congestion_tax_calculator_net_shared.Enums;
 
 namespace congestion.calculator.Services
 {
