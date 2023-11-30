@@ -9,7 +9,8 @@ namespace congestion.calculator.Models.Vehicles
     public class Car : Vehicle
     {
         private VehiclesTypes _type=VehiclesTypes.Car;
-        public VehiclesTypes GetVehicleType()
+
+        protected override VehiclesTypes GetVehicleType()
         {
             return _type;
         }

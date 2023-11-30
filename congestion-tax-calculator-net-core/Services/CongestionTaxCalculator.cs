@@ -15,7 +15,7 @@ namespace congestion.calculator.Services
         {
             this._congestionTimeService=congestionTimeService;
         }
-        public async Task<int> GetTax(Vehicle vehicle, DateTime[] dates, string city)
+        public async Task<int> GetTax(VehiclesTypes vehicle, DateTime[] dates, string city)
         {
             int totalFee = 0;
             foreach (var item in dates.GroupByCloseDates(60))
@@ -37,13 +37,13 @@ namespace congestion.calculator.Services
             return totalFee;
         }
     
-        private bool IsTollFreeVehicle(Vehicle vehicle)
+        private bool IsTollFreeVehicle(VehiclesTypes vehicle)
         {
             if (vehicle == null) return false;
-            return vehicle.GetVehicleType() != VehiclesTypes.Car;
+            return vehicle != VehiclesTypes.Car;
         }
 
-        public async Task<int> GetTollFee(DateTime date, Vehicle vehicle, string city)
+        public async Task<int> GetTollFee(DateTime date, VehiclesTypes vehicle, string city)
         {
             if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle)) return 0;
             var data =await _congestionTimeService.GetAllByCity(city);
@@ -65,5 +65,7 @@ namespace congestion.calculator.Services
             if (HolidaysHelper.IsItBeforeHoliday(date))return true ;
             return false;
         }
+
+
     }
 }

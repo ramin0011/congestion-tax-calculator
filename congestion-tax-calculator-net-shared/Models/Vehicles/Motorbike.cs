@@ -8,7 +8,7 @@ namespace congestion.calculator.Models.Vehicles
 {
     public class Motorbike : Vehicle
     {
-        public VehiclesTypes GetVehicleType()
+        protected override VehiclesTypes GetVehicleType()
         {
             return VehiclesTypes.Motorcycle;
         }

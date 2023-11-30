@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace congestion.calculator.Models.Vehicles
 {
-    public interface Vehicle
+    public abstract class Vehicle
     {
-        VehiclesTypes GetVehicleType();
+        protected abstract VehiclesTypes GetVehicleType();
     }
 }
