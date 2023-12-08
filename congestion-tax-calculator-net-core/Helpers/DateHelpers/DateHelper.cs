@@ -13,8 +13,26 @@ namespace congestion.calculator.Helpers.DateHelpers
         public static Dictionary<DateTime, List<DateTime>> GroupByCloseDates(this List<DateTime> dates, int interval_minutes)
         {
             var result = new Dictionary<DateTime, List<DateTime>>();
-
             dates = dates.OrderBy(a => a).ToList();
+
+            if (dates.Count == 2)
+            {
+                if (Math.Abs((dates.First() - dates.Last()).TotalMinutes) <= interval_minutes)
+                {
+                    return new Dictionary<DateTime, List<DateTime>>()
+                        { { dates.First(), new List<DateTime>() { dates.Last() } } };
+                }
+                else
+                {
+                    return new Dictionary<DateTime, List<DateTime>>()
+                    {
+                        { dates.First(), new List<DateTime>() { dates.First() } } ,
+                        { dates.Last(), new List<DateTime>() { dates.Last() } }
+                    };
+
+                }
+            }
+
             for (int i = 0; i < dates.Count; i++)
             {
                 DateTime date = dates[i];
